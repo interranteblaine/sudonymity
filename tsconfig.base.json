@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@sudonymity/models": ["libs/models/src/index.ts"],
+      "@sudonymity/trpc-client": ["libs/trpc-client/src/index.ts"],
+      "@sudonymity/trpc-server": ["libs/trpc-server/src/index.ts"],
+      "@sudonymity/utils": ["libs/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
