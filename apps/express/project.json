@@ -1,0 +1,56 @@
+{
+  "name": "express",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/express/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/express",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/express/src/main.ts",
+        "tsConfig": "apps/express/tsconfig.app.json",
+        "assets": ["apps/express/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "express:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "express:build:development"
+        },
+        "production": {
+          "buildTarget": "express:build:production"
+        }
+      }
+    }
+  }
+}
