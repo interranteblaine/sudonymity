@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@sudonymity/cloud-infra": ["libs/cloud-infra/src/index.ts"],
       "@sudonymity/models": ["libs/models/src/index.ts"],
       "@sudonymity/trpc-client": ["libs/trpc-client/src/index.ts"],
       "@sudonymity/trpc-server": ["libs/trpc-server/src/index.ts"],

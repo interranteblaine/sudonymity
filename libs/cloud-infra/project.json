@@ -1,0 +1,44 @@
+{
+  "name": "cloud-infra",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/cloud-infra/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/cloud-infra",
+        "tsConfig": "libs/cloud-infra/tsconfig.lib.json",
+        "packageJson": "libs/cloud-infra/package.json",
+        "main": "libs/cloud-infra/src/index.ts",
+        "assets": ["libs/cloud-infra/*.md"]
+      }
+    },
+    "synth": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cdk synth",
+            "cwd": "dist/libs/cloud-infra"
+          }
+        ],
+        "cwd": "dist/libs/cloud-infra"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cdk deploy",
+            "cwd": "dist/libs/cloud-infra"
+          }
+        ],
+        "cwd": "dist/libs/cloud-infra"
+      }
+    }
+  }
+}

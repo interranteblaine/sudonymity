@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './App.module.css';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 
 export function App() {
   return (
