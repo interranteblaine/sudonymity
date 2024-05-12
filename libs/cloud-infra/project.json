@@ -17,27 +17,39 @@
       }
     },
     "synth": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
+        "cwd": "dist/libs/cloud-infra",
         "commands": [
-          {
-            "command": "cdk synth",
-            "cwd": "dist/libs/cloud-infra"
-          }
-        ],
-        "cwd": "dist/libs/cloud-infra"
+          "cdk synth --app 'node src/index.js' --require-approval conditional"
+        ] 
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
+        "cwd": "dist/libs/cloud-infra",
         "commands": [
-          {
-            "command": "cdk deploy",
-            "cwd": "dist/libs/cloud-infra"
-          }
-        ],
-        "cwd": "dist/libs/cloud-infra"
+          "cdk deploy --app 'node src/index.js'"
+        ] 
+      }
+    },
+    "destroy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/libs/cloud-infra",
+        "commands": [
+          "cdk destroy --app 'node src/index.js' --force"
+        ] 
+      }
+    },
+    "bootstrap": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/libs/cloud-infra",
+        "commands": [
+          "cdk bootstrap --app 'node src/index.js'"
+        ] 
       }
     }
   }
