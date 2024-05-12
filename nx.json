@@ -38,7 +38,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/express-e2e/**/*", "apps/web-server-e2e/**/*"]
+      "exclude": [
+        "apps/express-e2e/**/*",
+        "apps/web-server-e2e/**/*",
+        "apps/web-service-fn-e2e/**/*"
+      ]
     },
     {
       "plugin": "@nx/vite/plugin",

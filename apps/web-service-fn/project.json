@@ -1,0 +1,56 @@
+{
+  "name": "web-service-fn",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/web-service-fn/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/web-service-fn",
+        "format": ["cjs"],
+        "bundle": true,
+        "main": "apps/web-service-fn/src/main.ts",
+        "tsConfig": "apps/web-service-fn/tsconfig.app.json",
+        "assets": ["apps/web-service-fn/src/assets"],
+        "generatePackageJson": false,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web-service-fn:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web-service-fn:build:development"
+        },
+        "production": {
+          "buildTarget": "web-service-fn:build:production"
+        }
+      }
+    }
+  }
+}
